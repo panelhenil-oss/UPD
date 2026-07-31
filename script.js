@@ -9,7 +9,7 @@ const CONFIG = {
   followLabel: "Follow Me",
 
   // Link to the video you want watched & liked
-  videoUrl: "https://youtu.be/dfpSUBsLc8g?si=jLZvowFhE8NUgHYE",
+  videoUrl: "https://youtu.be/8Vg1gZhvc5A?si=7Hg-BaxEGRGarYPo",
   videoLabel: "Watch & Like",
 
   // The REAL link that gets unlocked (only revealed after both steps are done)
