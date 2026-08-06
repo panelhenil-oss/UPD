@@ -1,93 +1,30 @@
-/* ==========================================================
-   SCRIPT VAULT — logika za dugmad "Copy"
-   Ovaj fajl NE treba mijenjati — sav sadržaj se mijenja
-   direktno u index.html (naslovi i tekst unutar kartica).
-   ========================================================== */
+/* ============================================================
+   EDIT THIS LINE ONLY
+   ------------------------------------------------------------
+   Replace the text between the quotes below with your real URL.
+   Keep the quotes and the semicolon exactly as they are.
 
-document.addEventListener('DOMContentLoaded', () => {
-  const toast = document.getElementById('toast');
-  let toastTimeout = null;
+   Example:
+   const NEW_LINK = "https://example.com/latest-script";
+   ============================================================ */
+const NEW_LINK = "https://link-target.net/1239053/9FFBXQ9T0Iod";
+/* ============================================================
+   DO NOT EDIT BELOW THIS LINE
+   ============================================================ */
 
-  // Nađi sve "Copy" dugmiće na stranici (radi za bilo koji broj kartica)
-  const copyButtons = document.querySelectorAll('.copy-btn');
+function initScriptUpdatePage() {
+  const btn = document.getElementById("openLinkBtn");
+  if (!btn) return;
 
-  copyButtons.forEach((button) => {
-    button.addEventListener('click', () => handleCopyClick(button));
+  btn.addEventListener("click", function () {
+    window.open(NEW_LINK, "_blank", "noopener,noreferrer");
   });
+}
 
-  async function handleCopyClick(button) {
-    const targetId = button.getAttribute('data-target');
-    const targetEl = document.getElementById(targetId);
-
-    if (!targetEl) {
-      console.error('Nije pronađen sadržaj za kopiranje:', targetId);
-      return;
-    }
-
-    // Uzimamo čist tekst iz kartice (bez HTML oznaka)
-    const textToCopy = targetEl.textContent.trim();
-
-    const success = await copyToClipboard(textToCopy);
-
-    if (success) {
-      showCopiedState(button);
-      showToast('Kopirano u clipboard');
-    } else {
-      showToast('Kopiranje nije uspjelo — pokušaj ponovo');
-    }
-  }
-
-  // Kopiranje u clipboard, sa fallback-om za starije browsere / ne-HTTPS
-  async function copyToClipboard(text) {
-    if (navigator.clipboard && window.isSecureContext) {
-      try {
-        await navigator.clipboard.writeText(text);
-        return true;
-      } catch (err) {
-        console.warn('navigator.clipboard nije uspio, koristim fallback.', err);
-      }
-    }
-
-    // Fallback metoda (radi i na starijim browserima)
-    try {
-      const tempTextarea = document.createElement('textarea');
-      tempTextarea.value = text;
-      tempTextarea.style.position = 'fixed';
-      tempTextarea.style.opacity = '0';
-      document.body.appendChild(tempTextarea);
-      tempTextarea.focus();
-      tempTextarea.select();
-      const successful = document.execCommand('copy');
-      document.body.removeChild(tempTextarea);
-      return successful;
-    } catch (err) {
-      console.error('Kopiranje nije uspjelo:', err);
-      return false;
-    }
-  }
-
-  // Privremeno mijenja izgled dugmeta u "Copied!" sa kvačicom
-  function showCopiedState(button) {
-    const textEl = button.querySelector('.copy-btn__text');
-    const originalText = textEl.textContent;
-
-    button.classList.add('is-copied');
-    textEl.textContent = 'Copied!';
-
-    setTimeout(() => {
-      button.classList.remove('is-copied');
-      textEl.textContent = originalText;
-    }, 2000);
-  }
-
-  // Prikazuje malu poruku (toast) na dnu ekrana
-  function showToast(message) {
-    toast.textContent = message;
-    toast.classList.add('is-visible');
-
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => {
-      toast.classList.remove('is-visible');
-    }, 2200);
-  }
-});
+// Run immediately if the page is already ready, otherwise wait for it.
+// This makes the script work correctly no matter how or when it's loaded.
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initScriptUpdatePage);
+} else {
+  initScriptUpdatePage();
+}
