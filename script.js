@@ -9,11 +9,11 @@ const CONFIG = {
   followLabel: "Follow Me",
 
   // Link to the video you want watched & liked
-  videoUrl: "https://youtu.be/dfpSUBsLc8g?si=jLZvowFhE8NUgHYE",
+  videoUrl: "https://youtu.be/qBmAVwfewBc?si=k5ANYdQWs8E6VqbM",
   videoLabel: "Watch & Like",
 
   // The REAL link that gets unlocked (only revealed after both steps are done)
-  mainUrl: "https://linkvertise.com/1239053/3YvtIhLbofSo",
+  mainUrl: "https://direct-link.net/1239053/MndAft2f4Hhm",
   mainLabel: "Open Link",
 
   // Minimum time (in seconds) that must pass FROM THE LATER OF THE TWO
