@@ -13,7 +13,7 @@ const CONFIG = {
   videoLabel: "Watch & Like",
 
   // The REAL link that gets unlocked (only revealed after both steps are done)
-  mainUrl: "https://linkvertise.com/1239053/3YvtIhLbofSo",
+  mainUrl: "https://link-target.net/1239053/6EwWEs3aR8t0",
   mainLabel: "Open Link",
 
   // Minimum time (in seconds) that must pass FROM THE LATER OF THE TWO
