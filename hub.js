@@ -1,11 +1,62 @@
 /* ==========================================================
    SCRIPT UPDATE — logika (meni igara + kopiranje)
    Ovaj fajl NE treba mijenjati — igre i skripte se mijenjaju
-   samo u games.js.
+   samo u config.js (Script Update Editor).
    ========================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
-  const BRAND = (typeof SITE !== 'undefined' && SITE.brand) || 'Script Update';
+(function () {
+  const CFG = window.SITE_CONFIG || {};
+  const SITE = CFG.site || {};
+  const GAMES = CFG.games || [];
+  const BRAND = SITE.brand || 'Script Update';
+  const escapeHtml0 = (s) => String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+  // ---------- Kostur stranice ----------
+  document.body.insertAdjacentHTML('beforeend', `
+<div class="bg-glow bg-glow--one" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--two" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <div class="page">
+
+    <!-- ===== STRANICA 1: IZBOR IGRE ===== -->
+    <div id="view-menu" class="view">
+      <header class="page-header">
+        <div class="brand">
+          <span class="brand-mark">&gt;_</span>
+          <span class="brand-name">{{BRAND}}</span>
+        </div>
+        <p class="page-subtitle">{{MENU_SUBTITLE}}</p>
+      </header>
+      <main class="game-grid" id="game-grid"></main>
+    </div>
+
+    <!-- ===== STRANICA 2: SKRIPTE ZA IZABRANU IGRU ===== -->
+    <div id="view-game" class="view" hidden>
+      <header class="page-header">
+        <button class="back-btn" type="button" id="back-btn">&larr; All games</button>
+        <div class="brand">
+          <span class="brand-mark" id="game-mark">&gt;_</span>
+          <span class="brand-name" id="game-name">{{BRAND}}</span>
+        </div>
+        <p class="page-subtitle" id="game-subtitle"></p>
+        <button class="copy-btn copy-btn--top" type="button" id="copy-all"><span class="copy-btn__text">Copy</span></button>
+      </header>
+      <main class="deck" id="deck"></main>
+    </div>
+
+    <footer class="page-footer">
+      <p>{{FOOTER}}</p>
+    </footer>
+
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Kopirano u clipboard</div>`
+    .split('{{BRAND}}').join(escapeHtml0(BRAND))
+    .split('{{MENU_SUBTITLE}}').join(escapeHtml0(SITE.menuSubtitle || ''))
+    .split('{{FOOTER}}').join(escapeHtml0(SITE.footer || '')));
+
   const viewMenu = document.getElementById('view-menu');
   const viewGame = document.getElementById('view-game');
   const grid = document.getElementById('game-grid');
@@ -157,4 +208,4 @@ document.addEventListener('DOMContentLoaded', () => {
     clearTimeout(toastTimeout);
     toastTimeout = setTimeout(() => toast.classList.remove('is-visible'), 2200);
   }
-});
+})();
