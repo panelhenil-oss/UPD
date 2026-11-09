@@ -41,7 +41,7 @@ const GAMES = [
     "icon": "images/blox-fruits-11f0655a.webp",
     "scripts": [
       {
-        "title": "1 NO KEY SCRIPT",
+        "title": "NO KEY SCRIPT",
         "code": "loadstring(game:HttpGet(\"https://flowauth.net/v1/loaders/Aqua-Hub.lua\"))()"
       }
     ]
