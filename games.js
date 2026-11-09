@@ -14,6 +14,7 @@ const GAMES = [
     "id": "egg",
     "name": "Steal An Egg",
     "subtitle": "Here you can find the two latest scripts.",
+    "icon": "images/egg-b7915f01.webp",
     "scripts": [
       {
         "title": "1 NO KEY SCRIPT",
