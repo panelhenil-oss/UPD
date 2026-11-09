@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Script Update — Choose Your Game</title>
+  <meta name="description" content="Pick your game and grab the script in one click." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="bg-glow bg-glow--one" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--two" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <div class="page">
+
+    <!-- ===== STRANICA 1: IZBOR IGRE ===== -->
+    <div id="view-menu" class="view">
+      <header class="page-header">
+        <div class="brand">
+          <span class="brand-mark">&gt;_</span>
+          <span class="brand-name">Script Update</span>
+        </div>
+        <p class="page-subtitle">Choose your game to get the latest scripts.</p>
+      </header>
+      <main class="game-grid" id="game-grid"></main>
+    </div>
+
+    <!-- ===== STRANICA 2: SKRIPTE ZA IZABRANU IGRU ===== -->
+    <div id="view-game" class="view" hidden>
+      <header class="page-header">
+        <button class="back-btn" type="button" id="back-btn">&larr; All games</button>
+        <div class="brand">
+          <span class="brand-mark">&gt;_</span>
+          <span class="brand-name" id="game-name">Script Update</span>
+        </div>
+        <p class="page-subtitle" id="game-subtitle"></p>
+        <button class="copy-btn copy-btn--top" type="button" id="copy-all"><span class="copy-btn__text">Copy</span></button>
+      </header>
+      <main class="deck" id="deck"></main>
+    </div>
+
+    <footer class="page-footer">
+      <p>Works on every device · Copy &amp; Paste</p>
+    </footer>
+
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Kopirano u clipboard</div>
+
+  <script src="games.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
