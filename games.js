@@ -21,5 +21,29 @@ const GAMES = [
         "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli.lua\"))()"
       }
     ]
+  },
+  {
+    "id": "rivals",
+    "name": "Rivals ",
+    "subtitle": "Here you can find the latest scripts.",
+    "icon": "images/rivals-9ca629c6.webp",
+    "scripts": [
+      {
+        "title": " NO KEY SCRIPT",
+        "code": "loadstring(game:HttpGet(\"https://api.luarmor.net/files/v3/loaders/2529a5f9dfddd5523ca4e22f21cceffa.lua\"))()"
+      }
+    ]
+  },
+  {
+    "id": "blox-fruits",
+    "name": "Blox Fruits",
+    "subtitle": "Here you can find the latest scripts.",
+    "icon": "images/blox-fruits-11f0655a.webp",
+    "scripts": [
+      {
+        "title": "1 NO KEY SCRIPT",
+        "code": "loadstring(game:HttpGet(\"https://flowauth.net/v1/loaders/Aqua-Hub.lua\"))()"
+      }
+    ]
   }
 ];
