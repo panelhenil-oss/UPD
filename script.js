@@ -21,7 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
   grid.innerHTML = GAMES.map((g, i) => `
     <a class="game-btn" href="#${encodeURIComponent(g.id)}" style="animation-delay:${i * 0.06}s">
       <span class="game-btn__glow" aria-hidden="true"></span>
-      <span class="game-btn__tag">GAME ${String(i + 1).padStart(2, '0')}</span>
+      <span class="game-btn__top">
+        ${g.icon ? `<img class="game-btn__icon" src="${escapeHtml(g.icon)}" alt="" loading="lazy">` : ''}
+        <span class="game-btn__tag">GAME ${String(i + 1).padStart(2, '0')}</span>
+      </span>
       <span class="game-btn__name">${escapeHtml(g.name)}</span>
       <span class="game-btn__meta">${g.scripts.length} script${g.scripts.length === 1 ? '' : 's'} &rarr;</span>
     </a>`).join('');
@@ -29,6 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---------- Stranica igre ----------
   function renderGame(game) {
     document.getElementById('game-name').textContent = game.name;
+    const mark = document.getElementById('game-mark');
+    mark.classList.toggle('brand-mark--img', !!game.icon);
+    mark.innerHTML = game.icon ? `<img src="${escapeHtml(game.icon)}" alt="">` : '&gt;_';
     document.getElementById('game-subtitle').textContent = game.subtitle || '';
     document.title = `${game.name} — ${BRAND}`;
 

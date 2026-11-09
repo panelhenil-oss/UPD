@@ -567,3 +567,45 @@ body {
 
 /* Ako igra ima samo jednu skriptu — jedna kartica u sredini */
 .deck--single { grid-template-columns: minmax(0, 520px); justify-content: center; }
+
+/* ==========================================================
+   IKONICE IGARA
+   ========================================================== */
+.game-btn__top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.game-btn__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 12px 26px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  background: #0a0b10;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.game-btn:hover .game-btn__icon { transform: scale(1.05) rotate(-2deg); }
+
+.brand-mark--img {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  overflow: hidden;
+  display: inline-flex;
+  border-color: var(--border-strong);
+  background: #0a0b10;
+}
+
+.brand-mark--img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+@media (max-width: 480px) {
+  .game-btn__icon { width: 48px; height: 48px; border-radius: 13px; }
+}
