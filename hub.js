@@ -41,7 +41,6 @@
           <span class="brand-name" id="game-name">{{BRAND}}</span>
         </div>
         <p class="page-subtitle" id="game-subtitle"></p>
-        <button class="copy-btn copy-btn--top" type="button" id="copy-all"><span class="copy-btn__text">Copy</span></button>
       </header>
       <main class="deck" id="deck"></main>
     </div>
@@ -106,6 +105,7 @@
           </div>
           <pre class="code-body">${escapeHtml(s.code)}</pre>
         </div>
+        <button class="copy-btn" type="button" data-copy="${i}"><span class="copy-btn__text">Copy</span></button>
       </section>`).join('');
   }
 
@@ -150,16 +150,16 @@
   window.addEventListener('hashchange', route);
   route();
 
-  // ---------- Copy dugme: kopira sve skripte izabrane igre ----------
-  const copyButton = document.getElementById('copy-all');
-  copyButton.addEventListener('click', async () => {
-    const text = Array.from(deck.querySelectorAll('.code-body'))
-      .map((b) => b.textContent.trim())
-      .filter(Boolean)
-      .join('\n\n');
+  // ---------- Copy dugme: svaka skripta ima svoje i kopira samo nju ----------
+  deck.addEventListener('click', async (e) => {
+    const button = e.target.closest('.copy-btn[data-copy]');
+    if (!button) return;
+    const body = button.closest('.card').querySelector('.code-body');
+    const text = body ? body.textContent.trim() : '';
+    if (!text) return showToast('Ova skripta je prazna');
 
     if (await copyToClipboard(text)) {
-      showCopiedState(copyButton);
+      showCopiedState(button);
       showToast('Kopirano u clipboard');
     } else {
       showToast('Kopiranje nije uspjelo — pokušaj ponovo');
